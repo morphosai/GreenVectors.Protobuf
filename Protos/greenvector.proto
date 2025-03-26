@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "GreenVectors.Protobuf";
+
+package green_vector;
+
+service GreenVectors {
+  rpc CreateBatch (GreenVectorRequest) returns (GreenVectorReply);
+}
+
+message FacetVector {
+  string facet = 1;
+  repeated float vectors = 2;
+}
+
+message InputVector {
+  repeated float vectors = 3;
+  map<string, float> facet_weights = 4;
+}
+
+message GreenVectorRequest {
+  repeated FacetVector facet_vectors = 5;
+  repeated InputVector input_vectors = 6;
+}
+
+message GreenVectorReply {
+  repeated FacetVector facet_vectors = 7;
+}
