@@ -11,6 +11,7 @@
 
     <ItemGroup>
       <Protobuf Include="Protos/greenvector.proto">
+          <ProtoRoot>Protos</ProtoRoot>
           <Generator>MSBuild:Compile</Generator>
           <GrpcServices>Server,Client</GrpcServices>
           <Access>Public</Access>
@@ -21,6 +22,7 @@
     </ItemGroup>
     
     <ItemGroup>
+        <PackageReference Include="Google.Api.Gax.Grpc" Version="4.10.0" />
         <PackageReference Include="Grpc.AspNetCore" Version="2.70.0" />
     </ItemGroup>
 </Project>

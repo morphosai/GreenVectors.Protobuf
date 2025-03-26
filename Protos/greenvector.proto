@@ -2,19 +2,19 @@ syntax = "proto3";
 
 option csharp_namespace = "GreenVectors.Protobuf";
 
-package green_vector;
+import "google/api/annotations.proto";
 
-service GreenVectors {
-  rpc CreateBatch (GreenVectorRequest) returns (GreenVectorReply);
-}
+package green_vector;
 
 message FacetVector {
   string facet = 1;
-  repeated float vectors = 2;
+  repeated float vector = 2;
+  uint64 count = 8;
+  float average_weight = 9;
 }
 
 message InputVector {
-  repeated float vectors = 3;
+  repeated float vector = 3;
   map<string, float> facet_weights = 4;
 }
 
@@ -25,4 +25,14 @@ message GreenVectorRequest {
 
 message GreenVectorReply {
   repeated FacetVector facet_vectors = 7;
+}
+service GreenVectors {
+  rpc CreateBatch (GreenVectorRequest) returns (GreenVectorReply);
+
+  rpc CreateBatchRest (GreenVectorRequest) returns (GreenVectorReply) {
+    option (google.api.http) = {
+      post: "/api/v1/vectors",
+      body: "*"
+    };
+  }
 }
