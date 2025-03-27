@@ -26,15 +26,15 @@
 <a name="green_vector-FacetVector"></a>
 
 ### FacetVector
-
+Green Vectorized facet
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| facet | [string](#string) |  |  |
-| vector | [float](#float) | repeated |  |
-| count | [uint64](#uint64) |  |  |
-| average_weight | [float](#float) |  |  |
+| facet | [string](#string) |  | Facet Name or unique key |
+| vector | [float](#float) | repeated | Green Vector |
+| count | [uint64](#uint64) |  | Number of vectors processed for this facet |
+| average_weight | [float](#float) |  | Average weight of vectors processed for this facet |
 
 
 
@@ -44,12 +44,12 @@
 <a name="green_vector-GreenVectorReply"></a>
 
 ### GreenVectorReply
-
+Reply object
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| facet_vectors | [FacetVector](#green_vector-FacetVector) | repeated |  |
+| facet_vectors | [FacetVector](#green_vector-FacetVector) | repeated | Array of FacetedVectors |
 
 
 
@@ -59,13 +59,13 @@
 <a name="green_vector-GreenVectorRequest"></a>
 
 ### GreenVectorRequest
-
+Request object
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| facet_vectors | [FacetVector](#green_vector-FacetVector) | repeated |  |
-| input_vectors | [InputVector](#green_vector-InputVector) | repeated |  |
+| facet_vectors | [FacetVector](#green_vector-FacetVector) | repeated | Array of FacetedVectors |
+| input_vectors | [InputVector](#green_vector-InputVector) | repeated | Array of InputVector |
 
 
 
@@ -75,13 +75,13 @@
 <a name="green_vector-InputVector"></a>
 
 ### InputVector
-
+Plain old Vector with facets to be Green Vectorized
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| vector | [float](#float) | repeated |  |
-| facet_weights | [InputVector.FacetWeightsEntry](#green_vector-InputVector-FacetWeightsEntry) | repeated |  |
+| vector | [float](#float) | repeated | Plain old Vector |
+| facet_weights | [InputVector.FacetWeightsEntry](#green_vector-InputVector-FacetWeightsEntry) | repeated | facets and weights pairs for this vector |
 
 
 
@@ -117,7 +117,8 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateBatch | [GreenVectorRequest](#green_vector-GreenVectorRequest) | [GreenVectorReply](#green_vector-GreenVectorReply) |  |
+| CreateBatch | [GreenVectorRequest](#green_vector-GreenVectorRequest) | [GreenVectorReply](#green_vector-GreenVectorReply) | gRPC Process Request |
+| CreateBatchRest | [GreenVectorRequest](#green_vector-GreenVectorRequest) | [GreenVectorReply](#green_vector-GreenVectorReply) | REST Process Request |
 
  
 

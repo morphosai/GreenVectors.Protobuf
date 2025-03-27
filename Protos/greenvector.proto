@@ -6,29 +6,45 @@ import "google/api/annotations.proto";
 
 package green_vector;
 
+// Green Vectorized facet
 message FacetVector {
+  // Facet Name or unique key
   string facet = 1;
+  // Green Vector
   repeated float vector = 2;
+  // Number of vectors processed for this facet
   uint64 count = 8;
+  // Average weight of vectors processed for this facet
   float average_weight = 9;
 }
 
+// Plain old Vector with facets to be Green Vectorized
 message InputVector {
+  // Plain old Vector
   repeated float vector = 3;
+  // facets and weights pairs for this vector
   map<string, float> facet_weights = 4;
 }
 
+// Request object
 message GreenVectorRequest {
+  // Array of FacetedVectors
   repeated FacetVector facet_vectors = 5;
+  // Array of InputVector
   repeated InputVector input_vectors = 6;
 }
 
+// Reply object
 message GreenVectorReply {
+  // Array of FacetedVectors
   repeated FacetVector facet_vectors = 7;
 }
-service GreenVectors {
-  rpc CreateBatch (GreenVectorRequest) returns (GreenVectorReply);
 
+service GreenVectors {
+  // gRPC Process Request
+  rpc CreateBatch (GreenVectorRequest) returns (GreenVectorReply);
+  
+  // REST Process Request
   rpc CreateBatchRest (GreenVectorRequest) returns (GreenVectorReply) {
     option (google.api.http) = {
       post: "/api/v1/vectors",
