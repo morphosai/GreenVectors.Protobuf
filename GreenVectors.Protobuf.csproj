@@ -5,9 +5,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <AssemblyName>GreenVectors.Protobuf</AssemblyName>
-        <RootNamespace>GreenVectors.Protobuf</RootNamespace>
         <TargetFramework>net9.0</TargetFramework>
+        <PackageId>GreenVectors.Protobuf</PackageId>
+        <Version>0.0.1</Version>
+        <Authors>James Osborn</Authors>
+        <Company>Morphos AI</Company>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,7 +21,7 @@
           <Access>Public</Access>
           <ProtoCompile>True</ProtoCompile>
           <CompileOutputs>True</CompileOutputs>
-          <OutputDir>obj\Debug/net8.0/</OutputDir>
+          <OutputDir>obj\Debug/net9.0/</OutputDir>
       </Protobuf>
     </ItemGroup>
     
