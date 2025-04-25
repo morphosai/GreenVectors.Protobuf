@@ -42,10 +42,7 @@ message GreenVectorReply {
 
 service GreenVectors {
   // gRPC Process Request
-  rpc CreateBatch (GreenVectorRequest) returns (GreenVectorReply);
-  
-  // REST Process Request
-  rpc CreateBatchRest (GreenVectorRequest) returns (GreenVectorReply) {
+  rpc CreateBatch (GreenVectorRequest) returns (GreenVectorReply) {
     option (google.api.http) = {
       post: "/api/v1/vectors",
       body: "*"
