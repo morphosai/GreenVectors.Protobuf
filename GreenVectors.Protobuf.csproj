@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Protobuf Include="Protos/greenvector.proto">
+      <Protobuf Include="Protos/green_vector.proto">
           <ProtoRoot>Protos</ProtoRoot>
           <Generator>MSBuild:Compile</Generator>
           <GrpcServices>Server,Client</GrpcServices>
